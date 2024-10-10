@@ -1,6 +1,6 @@
 # [ECCV 2024] VFusion3D: Learning Scalable 3D Generative Models from Video Diffusion Models
 
-[Porject page](https://junlinhan.github.io/projects/vfusion3d.html), [Paper link](https://arxiv.org/abs/2403.12034)
+[Project page](https://junlinhan.github.io/projects/vfusion3d.html), [Paper link](https://arxiv.org/abs/2403.12034), [HF Demo](https://huggingface.co/spaces/facebook/VFusion3D)
 
 VFusion3D is a large, feed-forward 3D generative model trained with a small amount of 3D data and a large volume of synthetic multi-view data. It is the first work exploring scalable 3D generative/reconstruction models as a step towards a 3D foundation.
 
@@ -12,7 +12,9 @@ European Conference on Computer Vision (ECCV), 2024
 
 ## News
 
+- [08.08.2024] [HF Demo](https://huggingface.co/spaces/facebook/VFusion3D) & [HF Model](https://huggingface.co/facebook/vfusion3d) are available, big thanks to [Jade Choghari](https://github.com/jadechoghari)'s help for making it possible. 
 - [25.07.2024] Release weights and inference code for VFusion3D.
+  
 
 ## Results and Comparisons
 
@@ -44,8 +46,7 @@ source install.sh
 
 ### Pretrained Models
 
-- Model weights are available here [Google Drive](https://drive.google.com/file/d/1b-KKSh9VquJdzmXzZBE4nKbXnbeua42X/view?usp=sharing). Please download it and put it inside ./checkpoints/
-
+- Model weights are available on [Google Drive](https://drive.google.com/file/d/1b-KKSh9VquJdzmXzZBE4nKbXnbeua42X/view?usp=sharing) and [Hugging Face](https://huggingface.co/facebook/vfusion3d/blob/main/model.safetensors). Please download it and put it inside ./checkpoints/ if you're running it from GitHub. Alternatively, you can easily follow the instructions on the Hugging Face model card here 🤗: https://huggingface.co/facebook/vfusion3d.
 
 ### Prepare Images
 - We put some sample inputs under `assets/40_prompt_images`, which is the 40 MVDream prompt generated images used in the paper. Results of them are also provided under `results/40_prompt_images_provided`. 
@@ -63,10 +64,16 @@ source install.sh
     # Export mesh
     python -m lrm.inferrer --export_mesh --resume ./checkpoints/vfusion3dckpt
     ```
-    
+
+### Local Gradio App
+
+```
+python gradio_app.py 
+```
+
 ### Hints
 
-1. *Running out of GPU memory?*
+1. *Running out of GPU memory when generating videos?*
    - Try reducing the `--render_size` parameter to 256 or even 128. Note that this will degrade performance.
 
 2. *Unsatisfactory results?*
@@ -102,4 +109,4 @@ If you find this work useful, please cite us:
 ## License
 
 - The majority of VFusion3D is licensed under CC-BY-NC, however portions of the project are available under separate license terms: OpenLRM as a whole is licensed under the Apache License, Version 2.0, while certain components are covered by NVIDIA's proprietary license.
-- The model weights of VFusion3D is also licensed under CC-BY-NC.
+- The model weights of VFusion3D are also licensed under CC-BY-NC.
